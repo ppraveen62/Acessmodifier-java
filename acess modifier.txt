@@ -1,0 +1,178 @@
+Access Modifiers
+For classes, you can use either public or default:
+
+
+
+Modifier		
+public -	The code is accessible for all classes	
+private	- The code is only accessible within the declared class	
+default	- The code is only accessible in the same package . This is used when you don't specify a modifier. You will learn more about packages in the Packages chapter	
+protected - The code is accessible in the same package and outside package by subclasses(through inhertance). You will learn more about subclasses and superclasses in the Inheritance chapter
+
+
+A method is subprogram.The general syntax is a below
+
+<accessmodifier> <returntype> methodname(parameters)
+{  
+//code   
+}
+
+default:
+
+the code is only accessible in the same package
+
+
+
+we are trying to acess display method in same package (pack1) but another class.
+
+defacess.java
+package pack1;
+
+public class defacess {
+	//void display since default acess modifier have no acess modifier.
+	void display() {
+		System.out.println("display method created");
+	}
+
+}
+
+acess.java
+package pack1;
+
+public class acess {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		defacess myobj=new defacess();
+		myobj.display();
+
+	}
+
+}
+
+
+ private	
+
+ The code is only accessible within the declared class	
+
+
+in this we cant acess private method display in another classes(it shows error).
+
+privacess.java
+package pack1;
+
+public class privacess {
+	
+	private void display() {
+	System.out.println("you are using private");
+	}
+
+}
+
+acess2.java
+package pack1;
+
+public class acess2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		privacess myobj=new privacess();
+		myobj.display();    //The method display() from the type privacess is not visible
+
+	}
+
+}
+
+private method is acessible only in same class.
+privacess.java
+public class priacess {
+
+      private void display() {
+	System.out.println("you are using private");
+	}
+
+      public static void main(String[] args) {
+
+       privacess myobj=new privacess();
+       myobj.display();
+      }
+  }
+
+
+protected 
+
+- The code is accessible in the same package and outside package by subclasses(through inhertance). You will learn more about subclasses and superclasses in the Inheritance chapter
+
+
+protacess.java
+package pack1;
+
+public class protacess {
+	
+	protected void display() {
+		
+		System.out.println("this is protected");
+		
+	}
+
+}
+
+
+in same package it is acessible ,
+we are changing package to check outside(through inhertance)
+through inhertance means we have to acess pack1 protacess class display() method
+ we have to import pack1 in pack 2
+ extend protacess class of pack1 in pack 2
+
+in pack2
+acess3.java 
+package pack2;
+
+import pack1.*; //we have to import if other pkg
+
+public class acess3  extends protacess{
+
+	public static void main(String[] args) {
+		
+		acess3 myobj = new acess3();
+		myobj.display();
+		
+	}
+
+}
+
+
+
+
+public -	The code is accessible for all classes
+
+pubacess.java
+package pack1;
+
+public class pubacess {
+	public void display() {
+		System.out.println("this is public");
+	}
+}
+
+in same package it is acessible , outside package to (but we have to import package in outside-package)
+we are changing package and importing
+
+acess4.java in pack2
+package pack2;
+
+import pack1.*;
+public class acess4 {
+
+	public static void main(String[] args) {
+		pubacess obj = new pubacess();
+		obj.display();
+
+	}
+
+}
+
+
+
+
